@@ -5,6 +5,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'rust-lang/rust.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'tomtom/tcomment_vim'
 "Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
