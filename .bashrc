@@ -1,22 +1,14 @@
-if [ -f ~/.bash_profile ]
-    then
-         . ~/.bash_profile
-fi
-
 
 
 ########################## personal aliases ##########################
 alias cwd='pwd'
-alias ls='ls -h'
-alias ll='ls -l'
-alias la='ls -A'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias gvim='mvim'
 
 
 #See how much space I have on a drive
-alias dfh='df -h'           
+alias diskspace="du -S | sort -n -r |more"
 
 alias cellar='cd /usr/local/Cellar'
 alias preview="open -a Preview"
@@ -27,12 +19,12 @@ PS1='[\u@\h:\w] > '
 
 ##################### elastic search #################################
 
-alias es='/opt/elasticsearch-2.1.0/bin/elasticsearch -d -p ~/.espid'
-alias es_stop='kill `cat ~/.espid`'
-alias logstash=''
-alias logstashtest="/opt/logstash-2.1.1/bin/logstash -e 'input { stdin { } } output { stdout {} }'"
-alias logstashstocks='/opt/logstash-2.1.1/bin/logstash -f /Users/dianeduros/Development/elasticsearch/logstash-stocks.conf'
-alias kibana='/usr/local/var/www/kibana/bin/kibana'
+#alias es='/opt/elasticsearch-2.1.0/bin/elasticsearch -d -p ~/.espid'
+#alias es_stop='kill `cat ~/.espid`'
+#alias logstash=''
+#alias logstashtest="/opt/logstash-2.1.1/bin/logstash -e 'input { stdin { } } output { stdout {} }'"
+#alias logstashstocks='/opt/logstash-2.1.1/bin/logstash -f /Users/dianeduros/Development/elasticsearch/logstash-stocks.conf'
+#alias kibana='/usr/local/var/www/kibana/bin/kibana'
 
 ###################### ssh ###########################################
 #alias paleblue='ssh ddhosfelt@PALEBLUE.local -p 4242'
@@ -60,18 +52,33 @@ extract () {
    fi
  }
 
+####################### up ###########################################
+up(){
+  local d=""
+  limit=$1
+  for ((i=1 ; i <= limit ; i++))
+    do
+      d=$d/..
+    done
+  d=$(echo $d | sed 's/^\///')
+  if [ -z "$d" ]; then
+    d=..
+  fi
+  cd $d
+}
+
 
 ####################### semester aliases ##############################
-alias school='cd ~/Google\ Drive/School/Fall\ 2014/'
-alias projects='cd ~/Documents/School/current-projects/'
+#alias school='cd ~/Google\ Drive/School/Fall\ 2014/'
+#alias projects='cd ~/Documents/School/current-projects/'
 
 
 ########################## start mysql ################################
-alias dsql='sudo mysql -u root -p'
+#alias dsql='sudo mysql -u root -p'
 
 #####TOMCAT
-alias tomcat='/Library/Tomcat/bin/startup.sh'
-alias stoptomcat='/Library/Tomcat/bin/shutdown.sh'
+#alias tomcat='/Library/Tomcat/bin/startup.sh'
+#alias stoptomcat='/Library/Tomcat/bin/shutdown.sh'
 
 ### SV proj 4
-alias backup='rsync -av -e "ssh -p 8024" user@localhost:/home/user/ ~/Documents/School/current-projects/software-vulnerability/project'
+#alias backup='rsync -av -e "ssh -p 8024" user@localhost:/home/user/ ~/Documents/School/current-projects/software-vulnerability/project'
